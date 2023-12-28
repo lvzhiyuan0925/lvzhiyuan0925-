@@ -1,4 +1,5 @@
 *注意：本协议的英文版本是确定和约束性的版本。提供的翻译仅供方便理解，不修改协议的条款。*
+
 *Note: The English version of this license is the definitive and binding version. Translations are provided for convenience only and do not modify the terms of the license.*
 
 **MIT开源协议：**
