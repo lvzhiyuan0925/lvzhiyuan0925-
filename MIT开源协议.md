@@ -2,7 +2,7 @@
 
 *Note: The English version of this license is the definitive and binding version. Translations are provided for convenience only and do not modify the terms of the license.*
 
-**MIT开源协议：**
+# MIT开源协议：
 
 版权所有（c）2023 - 现在 lvzhiyuan
 
@@ -12,7 +12,7 @@
 
 本软件按“原样”提供，不提供任何形式的明示或暗示的保证，包括但不限于适销性、特定用途适用性和非侵权性的保证。在任何情况下，作者或版权持有人均不对任何索赔、损害或其他责任负责，无论是因合同、侵权还是其他方式引起的，与软件或软件的使用或其他处理有关或与之无关。
 
-**MIT Open Source License:**
+# MIT Open Source License:
 
 Copyright (c) 2023 - Present lvzhiyuan
 
