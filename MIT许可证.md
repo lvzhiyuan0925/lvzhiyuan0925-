@@ -2,7 +2,7 @@
 
 *Note: The English version of this license is the definitive and binding version. Translations are provided for convenience only and do not modify the terms of the license.*
 
-# MIT开源协议：
+# MIT许可证：
 
 版权所有（c）2023 - 现在 lvzhiyuan
 
@@ -15,7 +15,7 @@
 作者联系方式：lvzhiyuan0925@outlook.com
 
 
-# MIT Open Source License:
+# MIT License:
 
 Copyright (c) 2023 - Present lvzhiyuan
 
