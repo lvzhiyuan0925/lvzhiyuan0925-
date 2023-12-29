@@ -14,7 +14,7 @@ port = None  # 端口
 password = None
 s = tk.Tk
 def 许可条款(event=None):
-    webbrowser.open('https://github.com/lvzhiyuan0925/lvzhiyuan0925-/blob/main/MIT%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE.md')
+    webbrowser.open('https://github.com/lvzhiyuan0925/lvzhiyuan0925-/blob/main/MIT%E8%AE%B8%E5%8F%AF%E8%AF%81.md')
 def 整体():
     global c_4,s,ccc_1
     i = 1
@@ -27,7 +27,7 @@ def 整体():
             # 连接到服务器
             rcon.connect()
         else:
-            if tk.messagebox.askokcancel('警告','阅读MIT开源协议\n确定及我已阅读并同意MIT开源协议（请返回“连接rcon”窗口查看）\n取消及我不同意MIT开源协议'):
+            if tk.messagebox.askokcancel('警告','阅读MIT许可证\n确定及我已阅读并同意MIT许可证（请返回“连接rcon”窗口查看）\n取消及我不同意MIT许可证'):
                 rcon.connect()
             else:
                 tk.messagebox.showinfo('再见','程序已退出')
@@ -209,7 +209,7 @@ cc_4 = tk.Entry(s_2)
 cc_1 = tk.Entry(s_2)
 cc_5 = tk.Label(s_2,text='rcon密码')
 cc_6 = tk.Entry(s_2)
-cc_7 = tk.Label(s_2,fg='blue',text='           MIT开源协议')
+cc_7 = tk.Label(s_2,fg='blue',text='           MIT许可证',cursor="hand2")
 cc_9 = tk.Checkbutton(s_2,text='我已阅读并同意',variable=ccc_1)
 c_4 = tk.Listbox()
 
