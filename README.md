@@ -34,7 +34,7 @@
 
 **使用前提：**
 
-1.你必须阅读并同意《[MIT许可证](https://github.com/lvzhiyuan0925/lvzhiyuan0925-/blob/main/MIT%E8%AE%B8%E5%8F%AF%E8%AF%81.md)》。
+1.你必须阅读并同意《[MIT许可证](https://github.com/lvzhiyuan0925/lvzhiyuan0925-/blob/main/LICENSE.md)》。
 
 2.使用本软件，你需要先安装 mcrcon 库，可以通过以下命令进行安装：
 
