@@ -8,20 +8,29 @@ import os
 import pickle
 import sys
 import socket
+import webbrowser
 host = None  # ip
 port = None  # 端口
 password = None
 s = tk.Tk
+def 许可条款(event=None):
+    webbrowser.open('https://github.com/lvzhiyuan0925/lvzhiyuan0925-/blob/main/MIT%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE.md')
 def 整体():
-    global c_4,s
+    global c_4,s,ccc_1
     i = 1
     v = False
 
     # 创建 RCON 连接
     rcon = mcrcon.MCRcon(host, password, port)
     try:
-        # 连接到服务器
-        rcon.connect()
+        if ccc_1.get():
+            # 连接到服务器
+            rcon.connect()
+        else:
+            if tk.messagebox.askokcancel('警告','阅读MIT开源协议\n确定及我已阅读并同意MIT开源协议（请返回“连接rcon”窗口查看）\n取消及我不同意MIT开源协议'):
+                rcon.connect()
+            else:
+                tk.messagebox.showinfo('再见','程序已退出')
     except (ConnectionRefusedError,socket.gaierror,mcrcon.MCRconException) as error_1:
         tk.messagebox.showinfo('错误',f'无法连接服务器：{error_1}')
         with open('数据.pkl','rb+') as file:
@@ -157,6 +166,7 @@ def 退出():
     cc_4_ = cc_4.get()
     cc_6_ = cc_6.get()
     try:
+
         with open('数据.pkl', 'rb+') as file:
             if cc_1_ == '':
                 list_1 = pickle.load(file)
@@ -191,6 +201,7 @@ def 退出():
             整体()
 
 s_2 = tk.Tk()
+ccc_1 = tk.BooleanVar()
 button_2 = ttk.Button(s_2, text='连接（rcon）',command=退出)
 cc_2 = tk.Label(s_2,text='服务器ip/地址')
 cc_3 = tk.Label(s_2,text='rcon端口(不是服务器)')
@@ -198,11 +209,13 @@ cc_4 = tk.Entry(s_2)
 cc_1 = tk.Entry(s_2)
 cc_5 = tk.Label(s_2,text='rcon密码')
 cc_6 = tk.Entry(s_2)
+cc_7 = tk.Label(s_2,fg='blue',text='           MIT开源协议')
+cc_9 = tk.Checkbutton(s_2,text='我已阅读并同意',variable=ccc_1)
 c_4 = tk.Listbox()
 
 
 s_2.title('连接rcon')
-
+cc_7.bind('<Button-1>',许可条款)
 cc_2.pack()
 cc_1.pack()#ip
 cc_3.pack()
@@ -212,6 +225,9 @@ cc_6.pack()#密码
 
 
 button_2.pack()
+cc_7.pack()
+cc_9.place(x=50,y=157)
 
-s_2.geometry('350x160')
+
+s_2.geometry('350x185')
 s_2.mainloop()
