@@ -14,12 +14,11 @@ port = None  # 端口
 password = None
 s = tk.Tk
 def 许可条款(event=None):
-    webbrowser.open('https://github.com/lvzhiyuan0925/lvzhiyuan0925-/blob/main/MIT%E8%AE%B8%E5%8F%AF%E8%AF%81.md')
+    webbrowser.open('https://github.com/lvzhiyuan0925/lvzhiyuan0925-/blob/main/LICENSE.md')
+
 def 整体():
     global c_4,s,ccc_1
-    i = 1
     v = False
-
     # 创建 RCON 连接
     rcon = mcrcon.MCRcon(host, password, port)
     try:
@@ -31,6 +30,7 @@ def 整体():
                 rcon.connect()
             else:
                 tk.messagebox.showinfo('再见','程序已退出')
+                sys.exit()
     except (ConnectionRefusedError,socket.gaierror,mcrcon.MCRconException) as error_1:
         tk.messagebox.showinfo('错误',f'无法连接服务器：{error_1}')
         with open('数据.pkl','rb+') as file:
@@ -209,7 +209,7 @@ cc_4 = tk.Entry(s_2)
 cc_1 = tk.Entry(s_2)
 cc_5 = tk.Label(s_2,text='rcon密码')
 cc_6 = tk.Entry(s_2)
-cc_7 = tk.Label(s_2,fg='blue',text='           MIT许可证',cursor="hand2")
+cc_7 = tk.Label(s_2,fg='blue',text='        MIT许可证',cursor="hand2")
 cc_9 = tk.Checkbutton(s_2,text='我已阅读并同意',variable=ccc_1)
 c_4 = tk.Listbox()
 
