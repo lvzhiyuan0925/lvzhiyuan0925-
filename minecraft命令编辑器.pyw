@@ -4,7 +4,6 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 import threading
-import os
 import pickle
 import sys
 import socket
@@ -13,11 +12,12 @@ host = None  # ip
 port = None  # 端口
 password = None
 s = tk.Tk
+
 def 许可条款(event=None):
     webbrowser.open('https://github.com/lvzhiyuan0925/lvzhiyuan0925-/blob/main/LICENSE.md')
 
 def 整体():
-    global c_4,s,ccc_1
+    global c_4,s,ccc_1,cccc_1
     v = False
     # 创建 RCON 连接
     rcon = mcrcon.MCRcon(host, password, port)
@@ -48,74 +48,76 @@ def 整体():
     s = tk.Tk()
 
     def 后台进程():
-        global c_4,s,v
+        global c_4,s,v,cccc_1
         text = c_1.get("1.0", "end-1c")
         text_2 = c_3.get()
         text___ = text.split('\n')
-        if str(text_2) == '*':
-            while v == True:
-                time_1 = time.time()
-                time_2 = time.ctime(time_1)
-                for text____ in text___:
-                    if text____.isdigit():
-                        try:
-                            c_4.insert(0, f'[{time_2}]   等待{int(text____)}秒')
-                            time.sleep(int(text____))
-                        except RuntimeError:
-                            sys.exit()
-                    elif text____.startswith('if @a == '):
-                        q = text____[len("if @a == "): -1]
-
-                        response = rcon.command(f'execute')
-                        if str(response) == '':
-                            text________ = text____[4:]
-                            c_4.insert(0, f'[{time_2}]   已发送：{text________}')
-                        else:
-                            c_4.insert(0,f'[{time_2}]   {response}')
-                    else:
-                        # 执行 RCON 命令
-                        response = rcon.command(f'{text____}')
-                        if str(response) == '':
-                            text________ = text____[4:]
-                            try:
-                                c_4.insert(0, f'[{time_2}]   已发送：{text________}')
-                            except RuntimeError:
-                                sys.exit()
-                        else:
-                            try:
-                                c_4.insert(0, f'[{time_2}]   {response}')
-                            except RuntimeError:
-                                sys.exit()
-
-        elif str(text_2) == '':
-            tk.messagebox.showinfo('警告','输入次数')
-        else:
-            for _ in range(int(text_2)):
-                for text____ in text___:
+        if text.split():
+            if str(text_2) == '*' or cccc_1.get():
+                while v == True:
                     time_1 = time.time()
                     time_2 = time.ctime(time_1)
-                    if text____.isdigit():
-
-                        c_4.insert(0, f'[{time_2}]   等待{int(text____)}秒')
-                        time.sleep(int(text____))
-                    else:
-                        # 执行 RCON 命令
-                        response = rcon.command(f'{text____}')
-                        if str(response) == '':
+                    for text____ in text___:
+                        if text____.isdigit():
                             try:
+                                c_4.insert(0, f'[{time_2}]   等待{int(text____)}秒')
+                                time.sleep(int(text____))
+                            except RuntimeError:
+                                sys.exit()
+                        elif text____.startswith('if @a == '):
+                            q = text____[len("if @a == "): -1]
+
+                            response = rcon.command(f'execute')
+                            if str(response) == '':
                                 text________ = text____[4:]
                                 c_4.insert(0, f'[{time_2}]   已发送：{text________}')
-                            except RuntimeError:
-                                sys.exit()
+                            else:
+                                c_4.insert(0,f'[{time_2}]   {response}')
                         else:
-                            try:
-                                c_4.insert(0, f'[{time_2}]   {response}')
-                            except RuntimeError:
-                                sys.exit()
+                            # 执行 RCON 命令
+                            response = rcon.command(f'{text____}')
+                            if str(response) == '':
+                                text________ = text____[4:]
+                                try:
+                                    c_4.insert(0, f'[{time_2}]   已发送：{text________}')
+                                except RuntimeError:
+                                    sys.exit()
+                            else:
+                                try:
+                                    c_4.insert(0, f'[{time_2}]   {response}')
+                                except RuntimeError:
+                                    sys.exit()
 
+            elif str(text_2) == '' and not cccc_1.get():
+                tk.messagebox.showinfo('警告','输入次数')
+            else:
+                try:
+                    for _ in range(int(text_2)):
+                        for text____ in text___:
+                            time_1 = time.time()
+                            time_2 = time.ctime(time_1)
+                            if text____.isdigit():
 
-
-
+                                c_4.insert(0, f'[{time_2}]   等待{int(text____)}秒')
+                                time.sleep(int(text____))
+                            else:
+                                # 执行 RCON 命令
+                                response = rcon.command(f'{text____}')
+                                if str(response) == '':
+                                    try:
+                                        text________ = text____[4:]
+                                        c_4.insert(0, f'[{time_2}]   已发送：{text________}')
+                                    except RuntimeError:
+                                        sys.exit()
+                                else:
+                                    try:
+                                        c_4.insert(0, f'[{time_2}]   {response}')
+                                    except RuntimeError:
+                                        sys.exit()
+                except ValueError as error_3:
+                    tk.messagebox.showinfo('错误',f'输入正确的字符串（str）或浮点数（int）:{error_3}')
+        else:
+            tk.messagebox.showinfo('警告',f'输入')
 
 
 
@@ -130,26 +132,30 @@ def 整体():
         global s
         if tk.messagebox.askokcancel('警告','确定退出？（不保存）'):
             s.destroy()
+            sys.exit()
         else:
             pass
 
 
 
 
-
+    cccc_1 = tk.BooleanVar()
 
     c_1 = tk.Text(s,width=60,height=15)
     c_2 = ttk.Label(s,text='次数')
     c_3 = ttk.Entry(s)
     c_4 = tk.Listbox(s,width=800,height=4)
-    button = ttk.Button(s,text='运行',command=button_command)
+    button_1 = ttk.Button(s,text='运行',command=button_command)
+    c_5 = tk.Checkbutton(s,text='无限（*也可以）',variable=cccc_1)
+
 
 
     c_4.pack()
     c_1.pack()
     c_2.pack()
     c_3.pack()
-    button.pack()
+    button_1.pack()
+    c_5.place(x=210,y=295)
 
     s.geometry('800x350')
     s.title('minecraft命令编辑器')
@@ -169,12 +175,15 @@ def 退出():
 
         with open('数据.pkl', 'rb+') as file:
             if cc_1_ == '':
-                list_1 = pickle.load(file)
-                host = str(list_1[0])
-                port = int(list_1[1])
-                password = str(list_1[2])
-                s_2.destroy()
-                整体()
+                try:
+                    list_1 = pickle.load(file)
+                    host = str(list_1[0])
+                    port = int(list_1[1])
+                    password = str(list_1[2])
+                    s_2.destroy()
+                    整体()
+                except Exception as error__:
+                    tk.messagebox.showinfo('警告',f'数据.pkl文件文件空，请填写相应内容：{error__}')
             else:
                 file.seek(0)
                 file.truncate()
@@ -223,7 +232,7 @@ cc_4.pack()#端口
 cc_5.pack()
 cc_6.pack()#密码
 
-
+cccc_1 = tk.BooleanVar()
 button_2.pack()
 cc_7.pack()
 cc_9.place(x=50,y=157)
